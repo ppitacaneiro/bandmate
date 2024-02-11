@@ -1,0 +1,36 @@
+---
+
+import type { ImageMetadata } from "astro";
+import { getImage } from "astro:assets";
+
+interface Props {
+    image: string | ImageMetadata;
+    title: string;
+    description: string;
+    buttonText: string;
+}
+
+const { image, title, description, buttonText } = Astro.props;
+
+
+const imageToRender = await getImage({
+    src: image,
+    format: "webp",
+});
+
+---
+
+<div class="p-4 flex justify-center">
+    <picture>
+        <source media="(max-width: 799px)" srcset={imageToRender.src} />
+        <source media="(min-width: 800px)" srcset={imageToRender.src} />
+        <img src={imageToRender.src}/>
+    </picture>
+</div>
+<div class="grid grid-cols-1 m-5 gap-4 content-center">
+    <h1 class="text-3xl font-bold text-left">{title}</h1>
+    <p class="text-left">{description}</p>
+    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        {buttonText}
+    </button>
+</div>

@@ -1,0 +1,54 @@
+---
+import NavBar from '../components/NavBar.astro'
+import Footer from '../components/Footer.astro'
+import { Image } from 'astro:assets';
+import musicianImage from '../assets/images/musician.png';
+import bandImage from '../assets/images/band.png';
+import LookingFor from '../components/LookingFor.astro'
+import Latest from '../components/Latest.astro'
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<NavBar imagePath="/src/assets/images/logo.png" altText='Hola'/>
+		<div class="w-full mx-auto max-w-screen-xl">
+			<div class="bg-gradient-to-b from-cyan-100 from-10% to-transparent">
+				<div class="pt-20 pb-5">
+					<h1 class="lg:text-7xl text-5xl text-blue-700 font-bold text-center">Welcome to Bandmate</h1>
+					<h2 class="text-center lg:text-2xl text-xl">Our mission is to help musicians and bands find each other</h2>
+				</div>
+			</div>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-4 mt-5 place-content-center">
+				<LookingFor
+					image={musicianImage}
+					title="Musician"
+					description="Are you a musician? We can help you find the perfect band for you."
+					buttonText="Find a Band">
+				</LookingFor>
+				<LookingFor
+					image={bandImage}
+					title="Band"
+					description="Are you a band? We can help you find the perfect musician for you."
+					buttonText="Find a Musician">
+				</LookingFor>
+			</div>
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-2 mt-5 place-content-center">
+				<Latest/>
+				<Latest/>
+			</div>
+		</div>
+		<Footer />
+	</body>
+	<script
+		is:inline
+		src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
+	></script>
+</html>
