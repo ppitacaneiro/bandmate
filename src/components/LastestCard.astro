@@ -1,0 +1,31 @@
+---
+interface Props {
+    name: string;
+	style: string;
+	location: string;
+    avatar: string;
+}
+
+const { name, style, location, avatar } = Astro.props;
+
+---
+<div class="flex items-center mt-3">
+    <div class="flex-shrink-0">
+        <img
+            class="w-8 h-8 rounded-full"
+            src={avatar}
+            alt="Neil image"/>
+    </div>
+    <div class="flex-1 min-w-0 ms-4">
+        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+            { name }
+        </p>
+        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+            { style }
+        </p>
+    </div>
+    <div
+        class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+        { location }
+    </div>
+</div>
